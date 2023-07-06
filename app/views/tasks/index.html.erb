@@ -2,7 +2,11 @@
 <ol>
   <% @tasks.each do |task| %>
   <li>
-    <%= link_to task.title, task_path(task.id) %>
+    <%= link_to task.title, task_path(task.id) %><%= link_to "Delete",
+  task_path(task.id),
+  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+%>
   </li>
   <% end %>
 </ol>
+<%= link_to "Create a new task", new_task_path %>
